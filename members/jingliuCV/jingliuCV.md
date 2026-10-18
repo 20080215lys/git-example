@@ -1,5 +1,6 @@
-# 学习目标\n学会使用 Git
-# mel0nyrame.md
+# 学习目标
+# 学会使用 Git
+# jingliuCV.md
 
 ## Hello,Git!
 
