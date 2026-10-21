@@ -21,7 +21,7 @@ class CheckPRTests(unittest.TestCase):
         self.git("config", "user.email", "octocat@example.invalid")
         for path in (
             "README.md", ".github/workflows/check.yml",
-            "members/octocat/octocat.md", "members/octocat/old.html",
+            "members/octocat/octocat.md", "members/octocat/octocat.txt", "members/octocat/old.html",
             "members/octocat/legacy.txt", "members/other/other.md",
         ):
             self.write(path, "base\n")
@@ -65,17 +65,28 @@ class CheckPRTests(unittest.TestCase):
         self.commit()
         self.check()
 
+    def test_own_text_file(self):
+        self.write("members/songyang-prog/songyang-prog.txt")
+        self.commit()
+        self.check(LOGIN="songyang-prog")
+
+    def test_modify_own_text_file(self):
+        self.write("members/octocat/octocat.txt")
+        self.commit()
+        self.check()
+
     def test_login_is_case_insensitive(self):
         self.write("members/octocat/octocat.md")
+        self.write("members/octocat/octocat.txt")
         self.commit()
         self.check(LOGIN="OctoCat")
 
     def test_forbidden_paths(self):
         for path in (
             "README.md", ".github/workflows/check.yml", "members/other/other.md",
-            "members/octocat/wrong.md", "members/octocat/legacy.txt",
+            "members/octocat/wrong.md", "members/octocat/legacy.txt", "members/other/other.txt",
             "members/octocat/photo.png", "members/octocat/.DS_Store",
-            "members/octocat/sub/page.html", "members/octocat-evil/page.html",
+            "members/octocat/sub/page.html", "members/octocat/sub/octocat.txt", "members/octocat-evil/page.html",
             "members/octocat/page.html\nREADME.md", "members/octocat/page.html\t.txt",
         ):
             with self.subTest(path=path):
@@ -87,6 +98,7 @@ class CheckPRTests(unittest.TestCase):
 
     def test_delete_own_allowed_files(self):
         (self.repo / "members/octocat/octocat.md").unlink()
+        (self.repo / "members/octocat/octocat.txt").unlink()
         (self.repo / "members/octocat/old.html").unlink()
         self.commit()
         self.check()
@@ -103,6 +115,20 @@ class CheckPRTests(unittest.TestCase):
         self.git("mv", "members/octocat/old.html", "members/octocat/new.html")
         self.commit()
         self.check()
+
+    def test_rename_own_text_to_markdown(self):
+        self.write("members/octocat/octocat.txt")
+        self.git("rm", "members/octocat/octocat.md")
+        self.git("mv", "members/octocat/octocat.txt", "members/octocat/octocat.md")
+        self.commit()
+        self.check()
+
+    def test_text_symlink(self):
+        path = self.repo / "members/octocat/octocat.txt"
+        path.unlink()
+        path.symlink_to("../../README.md")
+        self.commit()
+        self.check(False, "符号链接")
 
     def test_move_other_member_file_into_own_folder(self):
         self.git("mv", "members/other/other.md", "members/octocat/new.html")

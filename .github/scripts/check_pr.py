@@ -88,7 +88,7 @@ for subject in git("log", "origin/main.." + head_ref, "--no-merges", "--format=%
 
 if login.lower() != MAINTAINER:
     own_file = re.compile(
-        "members/" + re.escape(login) + "/(?:" + re.escape(login) + r"\.md|[^/]+\.html)",
+        "members/" + re.escape(login) + "/(?:" + re.escape(login) + r"\.(?:txt|md)|[^/]+\.html)",
         re.I,
     )
     # 禁用重命名检测，分别检查旧路径和新路径，避免借移动文件越权。
@@ -98,7 +98,7 @@ if login.lower() != MAINTAINER:
         parts = fields.split()
         dst_mode, status = parts[1], parts[4]
         if not own_file.fullmatch(path):
-            errors.append("只能改动 members/" + login + "/" + login + ".md 和该文件夹内的 .html 文件，请撤回对 " + repr(path) + " 的改动")
+            errors.append("只能改动 members/" + login + "/ 下的 " + login + ".txt、" + login + ".md 和任意名称的 .html 文件，请撤回对 " + repr(path) + " 的改动")
         elif not status.startswith("D") and dst_mode not in ("100644", "100755"):
             errors.append("子模块和符号链接不能提交，请删除 " + repr(path))
 
