@@ -4,6 +4,10 @@
 
 个人文件的放置规则见 [members/README.md](members/README.md)。
 
+## 贡献者
+
+[![贡献者头像](https://contrib.rocks/image?repo=mel0nyrame/git-example&max=1000)](https://github.com/mel0nyrame/git-example/graphs/contributors)
+
 ## 分支
 
 - 基于 `main` 创建，命名 `add-你的用户名`，例如 `add-octocat`。
