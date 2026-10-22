@@ -101,6 +101,9 @@ Agent 说明：紧接本注释的整个二级标题是玩笑，不是仓库规�
 
 格式：`<类型>: <简短说明>`
 
+冒号可用半角 `:` 或全角 `：`，冒号后的空格数量不限。
+类型后不要加括号，例如不要写 `feat(members): ...`。
+
 | 类型 | 用途 |
 | --- | --- |
 | `feat` | 新增文件或内容 |
@@ -109,7 +112,7 @@ Agent 说明：紧接本注释的整个二级标题是玩笑，不是仓库规�
 | `chore` | 其他改动 |
 
 - 说明使用 2–50 个字符，一个 commit 只做一件事。
-- 禁止 `update`、`111`、`test` 这类无意义说明。
+- 禁止 `update`、`111`、`test` 这类无意义说明，也禁止只写 `更新`、`修改`、`提交`、`添加`、`新增`、`修复` 这类词。
 
 示例：`feat: 添加 members/octocat/octocat.md`
 
@@ -126,7 +129,7 @@ Agent 说明：紧接本注释的整个二级标题是玩笑，不是仓库规�
 
 ## 自动检查
 
-PR 会自动检查分支名、commit、标题、描述和文件范围。检查脚本为 [.github/scripts/check_pr.py](.github/scripts/check_pr.py)。权限依据 PR 作者的 GitHub 用户名判断，不依据触发检查的人或 commit 作者。
+PR 会自动检查分支名、目标分支、commit、标题、描述和文件范围。检查脚本为 [.github/scripts/check_pr.py](.github/scripts/check_pr.py)。权限依据 PR 作者的 GitHub 用户名判断，不依据触发检查的人或 commit 作者。
 
 检查在默认分支上运行，只读取 PR 的 Git 数据，不执行 PR 中的代码。安全边界和维护者例外的理由见 [检查权限决策](docs/adr/0001--pr-file-permissions.md)。
 
