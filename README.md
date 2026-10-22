@@ -21,6 +21,7 @@
   <a href="https://github.com/jkahlksdxj"><img src="https://avatars.githubusercontent.com/u/97830972?s=96&amp;v=4" width="48" height="48" alt="@jkahlksdxj" title="@jkahlksdxj" /></a>
   <a href="https://github.com/jingliuCV"><img src="https://avatars.githubusercontent.com/u/343392146?s=96&amp;v=4" width="48" height="48" alt="@jingliuCV" title="@jingliuCV" /></a>
   <a href="https://github.com/linzef314-0zhs"><img src="https://avatars.githubusercontent.com/u/337371588?s=96&amp;v=4" width="48" height="48" alt="@linzef314-0zhs" title="@linzef314-0zhs" /></a>
+  <a href="https://github.com/zjyntx"><img src="https://avatars.githubusercontent.com/u/344659863?s=96&amp;v=4" width="48" height="48" alt="@zjyntx" title="@zjyntx" /></a>
   <a href="https://github.com/677762"><img src="https://avatars.githubusercontent.com/u/330934625?s=96&amp;v=4" width="48" height="48" alt="@677762" title="@677762" /></a>
   <a href="https://github.com/ou-talang"><img src="https://avatars.githubusercontent.com/u/343372132?s=96&amp;v=4" width="48" height="48" alt="@ou-talang" title="@ou-talang" /></a>
   <a href="https://github.com/zile7"><img src="https://avatars.githubusercontent.com/u/312430692?s=96&amp;v=4" width="48" height="48" alt="@zile7" title="@zile7" /></a>
