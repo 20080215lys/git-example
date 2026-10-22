@@ -20,8 +20,10 @@
   <a href="https://github.com/92766"><img src="https://avatars.githubusercontent.com/u/344872170?s=96&amp;v=4" width="48" height="48" alt="@92766" title="@92766" /></a>
   <a href="https://github.com/Alex772137"><img src="https://avatars.githubusercontent.com/u/345415740?s=96&amp;v=4" width="48" height="48" alt="@Alex772137" title="@Alex772137" /></a>
   <a href="https://github.com/AsukaGaSuKi"><img src="https://avatars.githubusercontent.com/u/328937214?s=96&amp;v=4" width="48" height="48" alt="@AsukaGaSuKi" title="@AsukaGaSuKi" /></a>
+  <a href="https://github.com/Azuki2008"><img src="https://avatars.githubusercontent.com/u/344808987?s=96&amp;v=4" width="48" height="48" alt="@Azuki2008" title="@Azuki2008" /></a>
   <a href="https://github.com/chenkaixin565-coder"><img src="https://avatars.githubusercontent.com/u/345674246?s=96&amp;v=4" width="48" height="48" alt="@chenkaixin565-coder" title="@chenkaixin565-coder" /></a>
   <a href="https://github.com/Chenmukuro"><img src="https://avatars.githubusercontent.com/u/344847956?s=96&amp;v=4" width="48" height="48" alt="@Chenmukuro" title="@Chenmukuro" /></a>
+  <a href="https://github.com/chenweiha3"><img src="https://avatars.githubusercontent.com/u/321485086?s=96&amp;v=4" width="48" height="48" alt="@chenweiha3" title="@chenweiha3" /></a>
   <a href="https://github.com/coach-yzc"><img src="https://avatars.githubusercontent.com/u/343559368?s=96&amp;v=4" width="48" height="48" alt="@coach-yzc" title="@coach-yzc" /></a>
   <a href="https://github.com/DYXAAI"><img src="https://avatars.githubusercontent.com/u/344576029?s=96&amp;v=4" width="48" height="48" alt="@DYXAAI" title="@DYXAAI" /></a>
   <a href="https://github.com/Ephemeral-18"><img src="https://avatars.githubusercontent.com/u/344869623?s=96&amp;v=4" width="48" height="48" alt="@Ephemeral-18" title="@Ephemeral-18" /></a>
@@ -47,8 +49,10 @@
   <a href="https://github.com/Orin778"><img src="https://avatars.githubusercontent.com/u/340058235?s=96&amp;v=4" width="48" height="48" alt="@Orin778" title="@Orin778" /></a>
   <a href="https://github.com/ou-talang"><img src="https://avatars.githubusercontent.com/u/343372132?s=96&amp;v=4" width="48" height="48" alt="@ou-talang" title="@ou-talang" /></a>
   <a href="https://github.com/port-dot"><img src="https://avatars.githubusercontent.com/u/344571619?s=96&amp;v=4" width="48" height="48" alt="@port-dot" title="@port-dot" /></a>
+  <a href="https://github.com/ruisen77-gif"><img src="https://avatars.githubusercontent.com/u/233590711?s=96&amp;v=4" width="48" height="48" alt="@ruisen77-gif" title="@ruisen77-gif" /></a>
   <a href="https://github.com/seafood114"><img src="https://avatars.githubusercontent.com/u/345312390?s=96&amp;v=4" width="48" height="48" alt="@seafood114" title="@seafood114" /></a>
   <a href="https://github.com/senior-cycle"><img src="https://avatars.githubusercontent.com/u/342569995?s=96&amp;v=4" width="48" height="48" alt="@senior-cycle" title="@senior-cycle" /></a>
+  <a href="https://github.com/shenhe199"><img src="https://avatars.githubusercontent.com/u/345366871?s=96&amp;v=4" width="48" height="48" alt="@shenhe199" title="@shenhe199" /></a>
   <a href="https://github.com/Starrism-8148"><img src="https://avatars.githubusercontent.com/u/344806964?s=96&amp;v=4" width="48" height="48" alt="@Starrism-8148" title="@Starrism-8148" /></a>
   <a href="https://github.com/Tabris325"><img src="https://avatars.githubusercontent.com/u/345370896?s=96&amp;v=4" width="48" height="48" alt="@Tabris325" title="@Tabris325" /></a>
   <a href="https://github.com/tai-xu-stra"><img src="https://avatars.githubusercontent.com/u/345073141?s=96&amp;v=4" width="48" height="48" alt="@tai-xu-stra" title="@tai-xu-stra" /></a>
