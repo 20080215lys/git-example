@@ -33,7 +33,7 @@ class ContributorsTests(unittest.TestCase):
         (self.root / "members/student").mkdir()
         (self.root / "members/README.md").write_text("规则", encoding="utf-8")
         with patch.object(updater, "api", side_effect=[
-            [[{"id": 1, "login": "maintainer"}]], {"id": 2, "login": "student"},
+            [[{"id": 1, "login": "maintainer"}]], {"id": 2, "login": "student"}, [[]],
         ]):
             self.assertEqual(updater.update(self.root), 2)
         self.assertEqual(self.users(), [
@@ -55,9 +55,11 @@ class ContributorsTests(unittest.TestCase):
         users = [{"id": i, "login": f"user-{i}"} for i in range(1, 106)]
         with patch.object(updater, "api", return_value=[users[:100], users[100:]]) as api:
             self.assertEqual(updater.update(self.root), 105)
-        api.assert_called_once_with(
+        api.assert_any_call(
             f"repos/{updater.REPOSITORY}/contributors?per_page=100", paginate=True,
         )
+        api.assert_any_call(f"repos/{updater.REPOSITORY}/commits?per_page=100", paginate=True)
+        self.assertEqual(api.call_count, 2)
         self.assertEqual(self.readme.read_text().count("<img "), 105)
 
     def test_api_requests_follow_pagination(self):
@@ -73,7 +75,31 @@ class ContributorsTests(unittest.TestCase):
         (self.root / "members/USER").mkdir()
         with patch.object(updater, "api", return_value=[[{"id": 1, "login": "user"}]]) as api:
             updater.update(self.root)
-        self.assertEqual(api.call_count, 1)
+        self.assertEqual(api.call_count, 2)
+
+    def test_users_are_ordered_by_first_contribution_time(self):
+        with patch.object(updater, "api", side_effect=[
+            [[{"id": 1, "login": "later"}, {"id": 2, "login": "earlier"}]],
+            [[
+                {"author": {"login": "later"}, "commit": {"author": {"date": "2026-03-02T00:00:00Z"}}},
+                {"author": {"login": "earlier"}, "commit": {"author": {"date": "2026-03-01T00:00:00Z"}}},
+                {"author": {"login": "earlier"}, "commit": {"committer": {"date": "2026-02-01T00:00:00Z"}}},
+                {"author": None, "commit": {"author": {"date": "2026-01-01T00:00:00Z"}}},
+            ]],
+        ]):
+            self.assertEqual(updater.update(self.root), 2)
+        self.assertEqual([user["login"] for user in self.users()], ["earlier", "later"])
+        readme = self.readme.read_text(encoding="utf-8")
+        self.assertLess(readme.index('alt="@earlier"'), readme.index('alt="@later"'))
+
+    def test_missing_time_sorts_last_and_ties_use_login(self):
+        users = [{"id": 1, "login": "zzz"}, {"id": 2, "login": "aaa"}, {"id": 3, "login": "mmm"}]
+        with patch.object(updater, "api", side_effect=[
+            [users],
+            [[{"author": {"login": "zzz"}, "commit": {"author": {"date": "2026-01-01T00:00:00Z"}}}]],
+        ]):
+            updater.update(self.root)
+        self.assertEqual([user["login"] for user in self.users()], ["zzz", "aaa", "mmm"])
 
     def test_rename_uses_id_and_bot_is_not_silently_filtered(self):
         self.seed({"id": 1, "login": "old-login"})

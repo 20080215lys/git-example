@@ -72,13 +72,52 @@ def collect(root, roster):
     return roster
 
 
-def sorted_users(roster):
-    users = sorted(roster.values(), key=lambda user: user["login"].lower())
+def contribution_times():
+    """返回每个账号在默认分支上最早一次提交的 UTC 时间，用于按贡献时间排列。"""
+    pages = api(f"repos/{REPOSITORY}/commits?per_page=100", paginate=True)
+    if not isinstance(pages, list) or any(not isinstance(page, list) for page in pages):
+        raise ValueError("提交 API 未返回完整的分页数组")
+    times = {}
+    for page in pages:
+        for node in page:
+            if not isinstance(node, dict):
+                raise ValueError("提交数据格式错误")
+            author = node.get("author")
+            login = author.get("login") if isinstance(author, dict) else None
+            if not isinstance(login, str) or not LOGIN.fullmatch(login):
+                continue
+            commit = node.get("commit")
+            date = None
+            for part in ("author", "committer"):
+                value = commit.get(part) if isinstance(commit, dict) else None
+                if isinstance(value, dict) and isinstance(value.get("date"), str):
+                    date = value["date"]
+                    break
+            if date is None:
+                continue
+            key = login.lower()
+            if key not in times or date < times[key]:
+                times[key] = date
+    return times
+
+
+def sorted_users(roster, times=None):
+    users = list(roster.values())
     if not users:
         raise ValueError("贡献者名单不能为空")
     if len({user["login"].lower() for user in users}) != len(users):
         raise ValueError("多个账号 ID 使用同一用户名，请检查账号更名")
-    return users
+    if times is None:
+        # 名单中的顺序就是展示顺序；离线检查不查询提交时间。
+        return users
+    return sorted(
+        users,
+        key=lambda user: (
+            times.get(user["login"].lower(), "") == "",
+            times.get(user["login"].lower(), ""),
+            user["login"].lower(),
+        ),
+    )
 
 
 def render(readme, users):
@@ -104,9 +143,11 @@ def update(root=ROOT, check=False):
     readme_path = root / "README.md"
     readme = readme_path.read_text(encoding="utf-8")
     roster = load_roster(root)
-    if not check:
+    if check:
+        users = sorted_users(roster)
+    else:
         roster = collect(root, roster)
-    users = sorted_users(roster)
+        users = sorted_users(roster, contribution_times())
     generated = render(readme, users)
     if check:
         if generated != readme:
