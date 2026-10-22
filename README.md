@@ -72,6 +72,7 @@
   <a href="https://github.com/shenhe199"><img src="https://avatars.githubusercontent.com/u/345366871?s=96&amp;v=4" width="48" height="48" alt="@shenhe199" title="@shenhe199" /></a>
   <a href="https://github.com/github-actions[bot]"><img src="https://avatars.githubusercontent.com/u/41898282?s=96&amp;v=4" width="48" height="48" alt="@github-actions[bot]" title="@github-actions[bot]" /></a>
   <a href="https://github.com/zwlsleep"><img src="https://avatars.githubusercontent.com/u/218932959?s=96&amp;v=4" width="48" height="48" alt="@zwlsleep" title="@zwlsleep" /></a>
+  <a href="https://github.com/KA-BUT0"><img src="https://avatars.githubusercontent.com/u/308440890?s=96&amp;v=4" width="48" height="48" alt="@KA-BUT0" title="@KA-BUT0" /></a>
   <a href="https://github.com/jiang1-w"><img src="https://avatars.githubusercontent.com/u/345634707?s=96&amp;v=4" width="48" height="48" alt="@jiang1-w" title="@jiang1-w" /></a>
   <a href="https://github.com/lgq0217"><img src="https://avatars.githubusercontent.com/u/344834674?s=96&amp;v=4" width="48" height="48" alt="@lgq0217" title="@lgq0217" /></a>
   <a href="https://github.com/Orin778"><img src="https://avatars.githubusercontent.com/u/340058235?s=96&amp;v=4" width="48" height="48" alt="@Orin778" title="@Orin778" /></a>
