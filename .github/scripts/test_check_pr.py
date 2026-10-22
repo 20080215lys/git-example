@@ -13,7 +13,10 @@ BODY = "## 做了什么\n更新个人页面。\n\n## 改了哪些文件\n更新�
 
 class CheckPRTests(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory(prefix="pr-check-", dir=os.environ.get("TMPDIR"))
+        # Git 可能在提交后仍在写入临时仓库，清理失败不应让测试报错。
+        self.temp = tempfile.TemporaryDirectory(
+            prefix="pr-check-", dir=os.environ.get("TMPDIR"), ignore_cleanup_errors=True,
+        )
         self.addCleanup(self.temp.cleanup)
         self.repo = Path(self.temp.name)
         self.git("init", "-b", "main")
